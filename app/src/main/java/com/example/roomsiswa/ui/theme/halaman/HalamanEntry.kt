@@ -15,12 +15,33 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import com.example.roomsiswa.R
 import com.example.roomsiswa.model.DetailSiswa
+import com.example.roomsiswa.model.UIStateSiswa
 import com.example.roomsiswa.navigasi.DestinasiNavigasi
 
 object DestinasiEntry : DestinasiNavigasi {
     override val route = "item_entry"
     override val titleRes = R.string.entry_siswa
 }
+
+@Composable
+fun EntrySiswaBody(
+    uiStateSiswa: UIStateSiswa,
+    onSiswaValueChange: (DetailSiswa) -> Unit,
+    onSaveClick: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    Column(
+        verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_large)),
+        modifier = modifier.padding(dimensionResource(id = R.dimen.padding_medium))
+    ) {
+        FormInputSiswa(
+            detailSiswa = uiStateSiswa.detailSiswa,
+            onValueChange = onSiswaValueChange,
+            modifier = Modifier.fillMaxWidth()
+        )
+    }
+}
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
