@@ -26,7 +26,6 @@ fun SiswaApp(navController: NavHostController= rememberNavController()){
     HostNavigasi(navController = navController)
 }
 
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SiswaTopAppBar(
@@ -65,7 +64,8 @@ fun HostNavigasi(
             )
         }
         composable(DestinasiEntry.route){
-            EntrySiswaScreen(navigateBack = { navController.popBackStack() })
-            }
+            EntrySiswaScreen(navigateBack = { navController.popBackStack() }
+            )
         }
+    }
 }
