@@ -11,8 +11,9 @@ import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.navigation.NavHost
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.roomsiswa.R
 import com.example.roomsiswa.ui.theme.halaman.DestinasiEntry
@@ -22,7 +23,7 @@ import com.example.roomsiswa.ui.theme.halaman.HomeScreen
 
 
 @Composable
-fun SiswaApp(navController: NavHostController= rememberNavController()){
+fun SiswaApp(navController: NavHostController = rememberNavController()){
     HostNavigasi(navController = navController)
 }
 
@@ -34,12 +35,12 @@ fun SiswaTopAppBar(
     modifier: Modifier = Modifier,
     scrollBehavior: TopAppBarScrollBehavior? = null,
     navigateUp: () -> Unit = {}
-){
+) {
     CenterAlignedTopAppBar(title = { Text(title) },
         modifier = modifier,
-        scrollBehavior =scrollBehavior,
+        scrollBehavior = scrollBehavior,
         navigationIcon = {
-            if (canNavigateBack){
+            if (canNavigateBack) {
                 IconButton(onClick = navigateUp) {
                     Icon(
                         imageVector = Icons.Filled.ArrowBack,
@@ -60,7 +61,7 @@ fun HostNavigasi(
     NavHost(navController = navController, startDestination = DestinasiHome.route, modifier = Modifier)
     {
         composable(DestinasiHome.route){
-            HomeScreen(navigateToItemEntry = { navController.navigate(DestinasiEntry.route) },
+            HomeScreen(navigateToItemEntry = { navController.navigate(DestinasiEntry.route) }
             )
         }
         composable(DestinasiEntry.route){
